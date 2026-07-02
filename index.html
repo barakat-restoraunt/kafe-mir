@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кафе МИР | Восточная кухня</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="header" id="header">
+    <div class="header__container">
+        <a href="#" class="header__logo">
+            <div class="logo__text">
+                <span class="logo__name" data-ru="КАФЕ МИР" data-en="CAFE MIR" data-zh="咖啡和平">КАФЕ МИР</span>
+                <span class="logo__sub" data-ru="Восточная кухня" data-en="Eastern Cuisine" data-zh="东方美食">Восточная кухня</span>
+            </div>
+        </a>
+        <nav class="header__nav" id="mainNav">
+            <a href="#hero" class="nav__link active" data-ru="Главная" data-en="Home" data-zh="首页">Главная</a>
+            <a href="#menu" class="nav__link" data-ru="Меню" data-en="Menu" data-zh="菜单">Меню</a>
+            <a href="#about" class="nav__link" data-ru="О нас" data-en="About" data-zh="关于我们">О нас</a>
+            <a href="#contacts" class="nav__link" data-ru="Контакты" data-en="Contacts" data-zh="联系方式">Контакты</a>
+        </nav>
+        <div class="header__actions">
+            <div class="lang-switcher">
+                <button class="lang-btn active" data-lang="ru">RU</button>
+                <span class="lang-divider">/</span>
+                <button class="lang-btn" data-lang="en">EN</button>
+                <span class="lang-divider">/</span>
+                <button class="lang-btn" data-lang="zh">中</button>
+            </div>
+            <button class="burger" id="burger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </div>
+</header>
+
+<main>
+
+<section class="hero" id="hero">
+    <div class="hero__bg">
+        <div class="hero__particles" id="particles"></div>
+        <div class="hero__gradient"></div>
+    </div>
+    <div class="hero__content">
+        <div class="hero__badge">
+            <span class="badge__line"></span>
+            <span class="badge__text" data-ru="С 2010 года" data-en="Since 2010" data-zh="自2010年起">С 2010 года</span>
+            <span class="badge__line"></span>
+        </div>
+        <h1 class="hero__title">
+            <span class="title__line title__line--1" data-ru="КАФЕ" data-en="CAFE" data-zh="咖啡">КАФЕ</span>
+            <span class="title__line title__line--2">МИР</span>
+        </h1>
+        <p class="hero__subtitle" data-ru="Авторская восточная кухня" data-en="Author's Eastern Cuisine" data-zh="创意东方美食">Авторская восточная кухня</p>
+        <p class="hero__desc" data-ru="Где традиции встречаются с современностью" data-en="Where traditions meet modernity" data-zh="传统与现代的交汇">Где традиции встречаются с современностью</p>
+        <div class="hero__buttons">
+            <a href="#menu" class="btn btn--primary"><span data-ru="Наше меню" data-en="Our Menu" data-zh="我们的菜单">Наше меню</span></a>
+            <a href="#contacts" class="btn btn--outline"><span data-ru="Забронировать" data-en="Reserve" data-zh="预订">Забронировать</span></a>
+        </div>
+    </div>
+</section>
+
+<section class="menu-page" id="menu">
+    <div class="menu-page__container">
+
+        <div class="menu-page__sidebar">
+            <h2 class="sidebar__title" data-ru="Меню" data-en="Menu" data-zh="菜单">Меню</h2>
+            <nav class="sidebar__nav">
+                <button class="sidebar__btn active" data-category="breakfast">
+                    <span data-ru="Завтраки" data-en="Breakfasts" data-zh="早餐">Завтраки</span>
+                </button>
+                <button class="sidebar__btn" data-category="soups">
+                    <span data-ru="Супы" data-en="Soups" data-zh="汤">Супы</span>
+                </button>
+                <button class="sidebar__btn" data-category="hot">
+                    <span data-ru="Горячие блюда" data-en="Hot Dishes" data-zh="热菜">Горячие блюда</span>
+                </button>
+                <button class="sidebar__btn" data-category="shashlik">
+                    <span data-ru="Шашлыки" data-en="Shashlik" data-zh="烤串">Шашлыки</span>
+                </button>
+                <button class="sidebar__btn" data-category="desserts">
+                    <span data-ru="Десерты" data-en="Desserts" data-zh="甜点">Десерты</span>
+                </button>
+                <button class="sidebar__btn" data-category="pastry">
+                    <span data-ru="Выпечка" data-en="Pastry" data-zh="糕点">Выпечка</span>
+                </button>
+                <button class="sidebar__btn" data-category="drinks">
+                    <span data-ru="Напитки" data-en="Drinks" data-zh="饮料">Напитки</span>
+                </button>
+                <button class="sidebar__btn" data-category="tea">
+                    <span data-ru="Согревающие чаи" data-en="Warming Teas" data-zh="暖身茶">Согревающие чаи</span>
+                </button>
+            </nav>
+        </div>
+
+        <div class="menu-page__content">
+            <div class="menu-list" id="menuList">
+
+                <!-- ЗАВТРАКИ -->
+                <div class="menu-list__item" data-cat="breakfast">
+                    <div class="menu-list__img">
+                        <div class="menu-list__placeholder"></div>
+                    </div>
+                    <div class="menu-list__info">
+                        <h3 data-ru="Восточный завтрак" data-en="Eastern Breakfast" data-zh="东方早餐">Восточный завтрак</h3>
+                        <p data-ru="Яйца-болтунья с травами, хумус, лаваш, овощи, чай" data-en="Scrambled eggs with herbs, hummus, lavash, vegetables, tea" data-zh="香草炒蛋，鹰嘴豆泥，薄饼，蔬菜，茶">Яйца-болтунья с травами, хумус, лаваш, овощи, чай</p>
+                        <span class="menu-list__price">450 &#8381;</span>
+                    </div>
+                </div>
+
+                <div class="menu-list__item" data-cat="breakfast">
+                    <div class="menu-list__img">
+                        <div class="menu-list__placeholder"></div>
+                    </div>
+                    <div class="menu-list__info">
+                        <h3 data-ru="Яйца Бенедикт восточные" data-en="Eastern Eggs Benedict" data-zh="东方班尼迪克蛋">Яйца Бенедикт восточные</h3>
+                        <p data-ru="Яйцо пашот, шпинат, соус из шафрана, лаваш" data-en="Poached egg, spinach, saffron sauce, lavash" data-zh="水波蛋，菠菜，藏红花酱，薄饼">Яйцо пашот, шпинат, соус из шафрана, лаваш</p>
+                        <span class="menu-list__price">520 &#8381;</span>
+                    </div>
+                </div>
+
+                <div class="menu-list__item" data-cat="breakfast">
+                    <div class="menu-list__img">
+                        <div class="menu-list__placeholder"></div>
+                    </div>
+                    <div class="menu-list__info">
+                        <h3 data-ru="Сырники с медом и фисташками" data-en="Cottage Cheese Pancakes with Honey" data-zh="蜂蜜开心果奶渣饼">Сырники с медом и фисташками</h3>
+                        <p data-ru="Сырники, мёд, фисташки, йогурт, ягоды" data-en="Cottage cheese pancakes, honey, pistachios, yogurt, berries" data-zh="奶渣饼，蜂蜜，开心果，酸奶，浆果">Сырники, мёд, фисташки, йогурт, ягоды</p>
+                        <span class="menu-list__price">380 &#8381;</span>
+                    </div>
+                </div>
+
+                <!-- СУПЫ -->
+                <div class="menu-list__item" data-cat="soups">
+                    <div class="menu-list__img">
+                        <div class="menu-list__placeholder"></div>
+                    </div>
+                    <div class="menu-list__info">
+                        <h3 data-ru="Лагман" data-en="Lagman" data-zh="拉面">Лагман</h3>
+                        <p data-ru="Наваристый бульон, домашняя лапша, говядина, овощи" data-en="Rich broth, homemade noodles, beef, vegetables" data-zh="浓郁汤底，手工面条，牛肉，蔬菜">Наваристый бульон, домашняя лапша, говядина, овощи</p>
+                        <span class="menu-list__price">480 &#8381;</span>
+                    </div>
+                </div>
+
+                <div class="menu-list__item" data-cat="soups">
+                    <div class="menu-list__img">
+                        <div class="menu-list__placeholder"></div>
+                    </div>
+                    <div class="menu-list__info">
+                        <h3 data-ru="Харчо" data-en="Kharcho" data-zh="哈恰汤">Харчо</h3>
+                        <p data-ru="Грузинский суп с говядиной, рис, грецкий орех, специи" data-en="Georgian soup with beef, rice, walnuts, spices" data-zh="格鲁吉亚牛肉汤，大米，核桃，香料">Грузинский суп с говядиной, рис, грецкий орех, специи</p>
+                        <span class="menu-list__price">520 &#8381;</span>
+                    </div>
+                </div>
+
+                <div class="menu-list__item" data-cat="soups">
+                    <div class="menu-list__img">
+                        <div class="menu-list__placeholder"></div>
+                    </div>
+                    <div class="menu-list__info">
+                        <h3 data-ru="Чешмен" data-en="Cheshmen" data-zh="切什门汤">Чешмен</h3>
+                        <p data-ru="Говяжий бульон, домашняя лапша, зелень, чеснок" data-en="Beef broth, homemade noodles, herbs, garlic" data-zh="牛肉汤底，手工面条，香草，大蒜">Говяжий бульон, домашняя лапша, зелень, чеснок</p>
+                        <span class="menu-list__price">450 &#8381;</span>
+                    </div>
+                </div>
+
+                <!-- ГОРЯЧИЕ БЛЮДА -->
+                <div class="menu-list__item" data-cat="hot">
+                    <div class="menu-list__img">
+                        <div class="menu-list__placeholder"></div>
+                    </div>
+                    <div class="menu-list__info">
+                        <h3 data-ru="Плов узбекский" data-en="Uzbek Plov" data-zh="乌兹别克抓饭">Плов узбекский</h3>
+                        <p data-ru="Рис, баранина, морковь, лук, зира, барбарис. Казан-пособ" data-en="Rice, lamb, carrots, onion, cumin, barberry. Cast iron pot" data-zh="米饭，羊肉，胡萝卜，洋葱，孜然，伏牛花。铁锅烹饪">Рис, баранина, морковь, лук, зира, барбарис. Казан-пособ</p>
+                        <span class="menu-list__price">520 &#8381;</span>
+                    </div>
+                </div>
+
+                <div class="menu-list__item" data-cat="hot">
+                    <div class="menu-list__img">
+                        <div class="menu-list__placeholder"></div>
+                    </div>
+                    <div class="menu-list__info">
+                        <h3 data-ru="Манты" data-en="Manti" data-zh="蒸饺">Манты</h3>
+                        <p data-ru="Тесто, говядина, лук, специи. С йогуртом и маслом" data-en="Dough, beef, onion, spices. With yogurt and butter" data-zh="面皮，牛肉，洋葱，香料。配酸奶和黄油">Тесто, говядина, лук, специи. С йогуртом и маслом</p>
+                        <span class="menu-list__price">450 &#8381;</span>
+                    </div>
+                </div>
+
+                <div class="menu-list__item" data-cat="hot">
+                    <div class="menu-list__img">
+                        <div class="menu-list__placeholder"></div>
+                    </div>
+                    <div class="menu-list__info">
+                        <h3 data-ru="Бешбармак" data-en="Beshbarmak" data-zh="肉拼面">Бешбармак</h3>
+                        <p data-ru="Отварная баранина, домашняя лапша, луковая подлива" data-en="Boiled lamb, homemade noodles, onion sauce" data-zh="水煮羊肉，手工面条，洋葱酱">Отварная баранина, домашняя лапша, луковая подлива</p>
+                        <span class="menu-list__price">700 &#8381;</span>
+                    </div>
+                </div>
+
+                <!-- ШАШЛЫКИ -->
+                <div class="menu-list__item" data-cat="shashlik">
+                    <div class="menu-list__img">
+                        <div class="menu-list__placeholder"></div>
+                    </div>
+                    <div class="menu-list__info">
+                        <h3 data-ru="Шашлык из баранины" data-en="Lamb Shashlik" data-zh="羊肉烤串">Шашлык из баранины</h3>
+                        <p data-ru="Баранина на углях, лук, специи, лаваш, овощи гриль" data-en="Charcoal-grilled lamb, onion, spices, lavash, grilled vegetables" data-zh="炭烤羊肉，洋葱，香料，薄饼，烤蔬菜">Баранина на углях, лук, специи, лаваш, овощи гриль</p>
+                        <span class="menu-list__price">650 &#8381;</span>
+                    </div>
+                </div>
+
+                <div class="menu-list__item" data-cat="shashlik">
+                    <div class="menu-list__img">
+                        <div class="menu-list__placeholder"></div>
+                    </div>
+                    <div class="menu-list__info">
+                        <h3 data-ru="Шашлык из курицы" data-en="Chicken Shashlik" data-zh="鸡肉烤串">Шашлык из курицы</h3>
+                        <p data-ru="Куриное филе на углях, лук, специи, лаваш, соус" data-en="Charcoal-grilled chicken fillet, onion, spices, lavash, sauce" data-zh="炭烤鸡胸肉，洋葱，香料，薄饼，酱汁">Куриное филе на углях, лук, специи, лаваш, соус</p>
+                        <span class="menu-list__price">480 &#8381;</span>
+                    </div>
+                </div>
+
+                <div class="menu-list__item" data-cat="shashlik">
+                    <div class="menu-list__img">
+                        <div class="menu-list__placeholder"></div>
+                    </div>
+                    <div class="menu-list__info">
+                        <h3 data-ru="Шашлык из свинины" data-en="Pork Shashlik" data-zh="猪肉烤串">Шашлык из свинины</h3>
+                        <p data-ru="Свинина на углях, лук, специи, лаваш, овощи" data-en="Charcoal-grilled pork, onion, spices, lavash, vegetables" data-zh="炭烤猪肉，洋葱，香料，薄饼，蔬菜">Свинина на углях, лук, специи, лаваш, овощи</p>
+                        <span class="menu-list__price">500 &#8381;</span>
+                    </div>
+                </div>
+
+                <!-- ДЕСЕРТЫ -->
+                <div class="menu-list__item" data-cat="desserts">
+                    <div class="menu-list__img">
+                        <div class="menu-list__placeholder"></div>
+                    </div>
+                    <div class="menu-list__info">
+                        <h3 data-ru="Баклава" data-en="Baklava" data-zh="果仁蜜饼">Баклава</h3>
+                        <p data-ru="Слоёное тесто, орехи, мёд, сахарный сироп" data-en="Puff pastry, nuts, honey, sugar syrup" data-zh="酥皮，坚果，蜂蜜，糖浆">Слоёное тесто, орехи, мёд, сахарный сироп</p>
+                        <span class="menu-list__price">250 &#8381;</span>
+                    </div>
+                </div>
+
+                <div class="menu-list__item" data-cat="desserts">
+                    <div class="menu-list__img">
+                        <div class="menu-list__placeholder"></div>
+                    </div>
+                    <div class="menu-list__info">
+                        <h3 data-ru="Пахлава с фисташками" data-en="Pistachio Pahlava" data-zh="开心果帕赫拉瓦">Пахлава с фисташками</h3>
+                        <p data-ru="Многослойное тесто, фисташки, мёд, розовая вода" data-en="Layered pastry, pistachios, honey, rose water" data-zh="多层酥皮，开心果，蜂蜜，玫瑰水">Многослойное тесто, фисташки, мёд, розовая вода</p>
+                        <span class="menu-list__price">280 &#8381;</span>
+                    </div>
+                </div>
+
+                <div class="menu-list__item" data-cat="desserts">
+                    <div class="menu-list__img">
+                        <div class="menu-list__placeholder"></div>
+                    </div>
+                    <div class="menu-list__info">
+                        <h3 data-ru="Пломбир восточный" data-en="Eastern Ice Cream" data-zh="东方冰淇淋">Пломбир восточный</h3>
+                        <p data-ru="Сливочное мороженое, шафран, фисташки, розовые лепестки" data-en="Butter ice cream, saffron, pistachios, rose petals" data-zh="黄油冰淇淋，藏红花，开心果，玫瑰花瓣">Сливочное мороженое, шафран, фисташки, розовые лепестки</p>
+                        <span class="menu-list__price">320 &#8381;</span>
+                    </div>
+                </div>
+
+                <!-- ВЫПЕЧКА -->
+                <div class="menu-list__item" data-cat="pastry">
+                    <div class="menu-list__img">
+                        <div class="menu-list__placeholder"></div>
+                    </div>
+                    <div class="menu-list__info">
+                        <h3 data-ru="Самса с бараниной" data-en="Samsa with Lamb" data-zh="羊肉烤包子">Самса с бараниной</h3>
+                        <p data-ru="Слоёное тесто, баранина, лук, зира. Тандыр" data-en="Puff pastry, lamb, onion, cumin. Tandoor" data-zh="酥皮，羊肉，洋葱，孜然。坦都尔烤">Слоёное тесто, баранина, лук, зира. Тандыр</p>
+                        <span class="menu-list__price">180 &#8381;</span>
+                    </div>
+                </div>
+
+                <div class="menu-list__item" data-cat="pastry">
+                    <div class="menu-list__img">
+                        <div class="menu-list__placeholder"></div>
+                    </div>
+                    <div class="menu-list__info">
+                        <h3 data-ru="Лепёшка домашняя" data-en="Homemade Flatbread" data-zh="家常馕饼">Лепёшка домашняя</h3>
+                        <p data-ru="Свежая лепёшка из тандыра с кунжутом" data-en="Fresh tandoor flatbread with sesame" data-zh="新鲜坦都尔馕饼配芝麻">Свежая лепёшка из тандыра с кунжутом</p>
+                        <span class="menu-list__price">120 &#8381;</span>
+                    </div>
+                </div>
+
+                <div class="menu-list__item" data-cat="pastry">
+                    <div class="menu-list__img">
+                        <div class="menu-list__placeholder"></div>
+                    </div>
+                    <div class="menu-list__info">
+                        <h3 data-ru="Чебуреки" data-en="Chebureki" data-zh="馅饼">Чебуреки</h3>
+                        <p data-ru="Тонкое тесто, говяжий фарш, лук, специи" data-en="Thin dough, beef mince, onion, spices" data-zh="薄面皮，牛肉馅，洋葱，香料">Тонкое тесто, говяжий фарш, лук, специи</p>
+                        <span class="menu-list__price">200 &#8381;</span>
+                    </div>
+                </div>
+
+                <!-- НАПИТКИ -->
+                <div class="menu-list__item" data-cat="drinks">
+                    <div class="menu-list__img">
+                        <div class="menu-list__placeholder"></div>
+                    </div>
+                    <div class="menu-list__info">
+                        <h3 data-ru="Капучино" data-en="Cappuccino" data-zh="卡布奇诺">Капучино</h3>
+                        <p data-ru="Эспрессо, молоко, молочная пенка" data-en="Espresso, milk, milk foam" data-zh="浓缩咖啡，牛奶，奶泡">Эспрессо, молоко, молочная пенка</p>
+                        <span class="menu-list__price">400 &#8381;</span>
+                    </div>
+                </div>
+
+                <div class="menu-list__item" data-cat="drinks">
+                    <div class="menu-list__img">
+                        <div class="menu-list__placeholder"></div>
+                    </div>
+                    <div class="menu-list__info">
+                        <h3 data-ru="Апельсиновый сок" data-en="Orange Juice" data-zh="橙汁">Апельсиновый сок</h3>
+                        <p data-ru="Свежевыжатый, без сахара" data-en="Freshly squeezed, no sugar" data-zh="鲜榨，无糖">Свежевыжатый, без сахара</p>
+                        <span class="menu-list__price">300 &#8381;</span>
+                    </div>
+                </div>
+
+                <div class="menu-list__item" data-cat="drinks">
+                    <div class="menu-list__img">
+                        <div class="menu-list__placeholder"></div>
+                    </div>
+                    <div class="menu-list__info">
+                        <h3 data-ru="Гранатовый сок" data-en="Pomegranate Juice" data-zh="石榴汁">Гранатовый сок</h3>
+                        <p data-ru="Натуральный, охлаждённый" data-en="Natural, chilled" data-zh="天然，冰镇">Натуральный, охлаждённый</p>
+                        <span class="menu-list__price">320 &#8381;</span>
+                    </div>
+                </div>
+
+                <!-- СОГРЕВАЮЩИЕ ЧАИ -->
+                <div class="menu-list__item" data-cat="tea">
+                    <div class="menu-list__img">
+                        <div class="menu-list__placeholder"></div>
+                    </div>
+                    <div class="menu-list__info">
+                        <h3 data-ru="Чай с кардамоном" data-en="Cardamom Tea" data-zh="豆蔻茶">Чай с кардамоном</h3>
+                        <p data-ru="Чёрный чай, кардамон, корица, гвоздика, мёд" data-en="Black tea, cardamom, cinnamon, cloves, honey" data-zh="红茶，豆蔻，肉桂，丁香，蜂蜜">Чёрный чай, кардамон, корица, гвоздика, мёд</p>
+                        <span class="menu-list__price">280 &#8381;</span>
+                    </div>
+                </div>
+
+                <div class="menu-list__item" data-cat="tea">
+                    <div class="menu-list__img">
+                        <div class="menu-list__placeholder"></div>
+                    </div>
+                    <div class="menu-list__info">
+                        <h3 data-ru="Мятный чай с мёдом" data-en="Mint Tea with Honey" data-zh="薄荷蜂蜜茶">Мятный чай с мёдом</h3>
+                        <p data-ru="Зелёный чай, свежая мята, мёд, лимон" data-en="Green tea, fresh mint, honey, lemon" data-zh="绿茶，新鲜薄荷，蜂蜜，柠檬">Зелёный чай, свежая мята, мёд, лимон</p>
+                        <span class="menu-list__price">260 &#8381;</span>
+                    </div>
+                </div>
+
+                <div class="menu-list__item" data-cat="tea">
+                    <div class="menu-list__img">
+                        <div class="menu-list__placeholder"></div>
+                    </div>
+                    <div class="menu-list__info">
+                        <h3 data-ru="Чай с шафраном" data-en="Saffron Tea" data-zh="藏红花茶">Чай с шафраном</h3>
+                        <p data-ru="Чёрный чай, шафран, сухофрукты, гвоздика" data-en="Black tea, saffron, dried fruits, cloves" data-zh="红茶，藏红花，干果，丁香">Чёрный чай, шафран, сухофрукты, гвоздика</p>
+                        <span class="menu-list__price">350 &#8381;</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section class="about" id="about">
+    <div class="section__container">
+        <div class="section__header">
+            <span class="section__badge" data-ru="О нас" data-en="About" data-zh="关于">О нас</span>
+            <h2 class="section__title" data-ru="О нашем кафе" data-en="About Our Cafe" data-zh="关于我们咖啡馆">О нашем кафе</h2>
+        </div>
+        <div class="about__grid">
+            <div class="about__card about__card--main">
+                <div class="about__card-icon">&#9753;</div>
+                <h3 data-ru="Наша история" data-en="Our Story" data-zh="我们的故事">Наша история</h3>
+                <p data-ru="Кафе «МИР» — это место, где встречаются восточные традиции и современный комфорт." data-en="Cafe MIR is a place where Eastern traditions meet modern comfort." data-zh="咖啡和平是东方传统与现代舒适相遇的地方。">Кафе «МИР» — это место, где встречаются восточные традиции и современный комфорт.</p>
+            </div>
+            <div class="about__card">
+                <div class="about__card-num">01</div>
+                <h3 data-ru="Восточная атмосфера" data-en="Eastern Atmosphere" data-zh="东方氛围">Восточная атмосфера</h3>
+                <p data-ru="Каждая деталь интерьера создана для того, чтобы вы почувствовали себя на Востоке" data-en="Every detail of the interior is designed to make you feel like you are in the East" data-zh="室内每个细节都旨在让您仿佛置身东方">Каждая деталь интерьера создана для того, чтобы вы почувствовали себя на Востоке</p>
+            </div>
+            <div class="about__card">
+                <div class="about__card-num">02</div>
+                <h3 data-ru="Авторские блюда" data-en="Signature Dishes" data-zh="创意菜品">Авторские блюда</h3>
+                <p data-ru="Наши шеф-повара создают уникальные блюда, сочетая традиции и современность" data-en="Our chefs create unique dishes combining tradition and modernity" data-zh="我们的厨师创作融合传统与现代的独特菜品">Наши шеф-повара создают уникальные блюда, сочетая традиции и современность</p>
+            </div>
+            <div class="about__card">
+                <div class="about__card-num">03</div>
+                <h3 data-ru="Свежие ингредиенты" data-en="Fresh Ingredients" data-zh="新鲜食材">Свежие ингредиенты</h3>
+                <p data-ru="Мы используем только качественные и свежие продукты" data-en="We use only high-quality and fresh products" data-zh="我们只使用优质新鲜的食材">Мы используем только качественные и свежие продукты</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="contacts" id="contacts">
+    <div class="section__container">
+        <div class="section__header">
+            <span class="section__badge" data-ru="Контакты" data-en="Contacts" data-zh="联系方式">Контакты</span>
+            <h2 class="section__title" data-ru="Свяжитесь с нами" data-en="Contact Us" data-zh="联系我们">Свяжитесь с нами</h2>
+        </div>
+        <div class="contacts__grid">
+            <div class="contacts__info">
+                <div class="contact__card">
+                    <div class="contact__icon">&#9670;</div>
+                    <div class="contact__text">
+                        <h4 data-ru="Адрес" data-en="Address" data-zh="地址">Адрес</h4>
+                        <p data-ru="г. Москва, ул. Войковская, д. 12" data-en="Moscow, Voykovskaya St., 12" data-zh="莫斯科，沃伊科夫卡娅街12号">г. Москва, ул. Войковская, д. 12</p>
+                    </div>
+                </div>
+                <div class="contact__card">
+                    <div class="contact__icon">&#9742;</div>
+                    <div class="contact__text">
+                        <h4 data-ru="Телефон" data-en="Phone" data-zh="电话">Телефон</h4>
+                        <p>+7 (495) 123-45-67</p>
+                    </div>
+                </div>
+                <div class="contact__card">
+                    <div class="contact__icon">&#9993;</div>
+                    <div class="contact__text">
+                        <h4>Email</h4>
+                        <p>info@cafe-mir.ru</p>
+                    </div>
+                </div>
+                <div class="contact__card">
+                    <div class="contact__icon">&#9201;</div>
+                    <div class="contact__text">
+                        <h4 data-ru="Часы работы" data-en="Working Hours" data-zh="营业时间">Часы работы</h4>
+                        <p data-ru="Пн-Вс: 10:00 — 23:00" data-en="Mon-Sun: 10:00 — 23:00" data-zh="周一至周日：10:00 — 23:00">Пн-Вс: 10:00 — 23:00</p>
+                    </div>
+                </div>
+            </div>
+            <div class="contacts__map">
+                <div class="map__placeholder">
+                    <div class="map__pin">&#9670;</div>
+                    <p data-ru="Карта" data-en="Map" data-zh="地图">Карта</p>
+                    <span data-ru="г. Москва, ул. Войковская, д. 12" data-en="Moscow, Voykovskaya St., 12" data-zh="莫斯科，沃伊科夫卡娅街12号">г. Москва, ул. Войковская, д. 12</span>
+                </div>
+            </div>
+        </div>
+        <div class="contacts__social">
+            <a href="#" class="social__link">Instagram</a>
+            <a href="#" class="social__link">VK</a>
+            <a href="#" class="social__link">Telegram</a>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<footer class="footer">
+    <div class="footer__container">
+        <div class="footer__logo">
+            <span data-ru="КАФЕ МИР" data-en="CAFE MIR" data-zh="咖啡和平">КАФЕ МИР</span>
+        </div>
+        <p>&copy; 2026 <span data-ru="Все права защищены" data-en="All rights reserved" data-zh="版权所有">Все права защищены</span></p>
+    </div>
+</footer>
+
+<script src="js/script.js"></script>
+</body>
+</html>
