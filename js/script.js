@@ -3,10 +3,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==================== LANGUAGE SWITCHING ====================
 
     const langBtns = document.querySelectorAll('.lang-btn');
-    let currentLang = 'ru';
 
     function switchLanguage(lang) {
-        currentLang = lang;
         document.documentElement.lang = lang === 'zh' ? 'zh-CN' : lang;
 
         document.querySelectorAll('[data-' + lang + ']').forEach(el => {
@@ -23,59 +21,30 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.addEventListener('click', () => switchLanguage(btn.dataset.lang));
     });
 
-    // ==================== MENU SIDEBAR ====================
+    // ==================== SMOOTH SCROLL ====================
 
-    const sidebarBtns = document.querySelectorAll('.sidebar__btn');
-    const menuItems = document.querySelectorAll('.menu-list__item');
+    const dropdown = document.querySelector('.nav-dropdown');
+    const dropdownToggle = document.querySelector('.nav-dropdown__toggle');
 
-    function filterMenu(category) {
-        menuItems.forEach((item, index) => {
-            if (item.dataset.cat === category) {
-                item.classList.remove('hidden');
-                item.style.animation = 'none';
-                item.offsetHeight;
-                item.style.animation = `fadeIn 0.4s ease forwards ${index * 0.05}s`;
-            } else {
-                item.classList.add('hidden');
-            }
+    if (dropdownToggle) {
+        dropdownToggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            dropdown.classList.toggle('active');
         });
     }
 
-    sidebarBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            sidebarBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            filterMenu(btn.dataset.category);
-        });
+    document.addEventListener('click', function(e) {
+        if (dropdown && !dropdown.contains(e.target)) {
+            dropdown.classList.remove('active');
+        }
     });
-
-    // Initialize
-    filterMenu('breakfast');
-
-    // ==================== BURGER ====================
-
-    const burger = document.getElementById('burger');
-    const mainNav = document.getElementById('mainNav');
-
-    burger.addEventListener('click', () => {
-        burger.classList.toggle('active');
-        mainNav.classList.toggle('active');
-        document.body.style.overflow = mainNav.classList.contains('active') ? 'hidden' : '';
-    });
-
-    mainNav.querySelectorAll('.nav__link').forEach(link => {
-        link.addEventListener('click', () => {
-            burger.classList.remove('active');
-            mainNav.classList.remove('active');
-            document.body.style.overflow = '';
-        });
-    });
-
-    // ==================== SMOOTH SCROLL ====================
 
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', (e) => {
+            if (anchor.classList.contains('nav-dropdown__toggle')) return;
             e.preventDefault();
+            if (dropdown) dropdown.classList.remove('active');
             const target = document.querySelector(anchor.getAttribute('href'));
             if (target) {
                 const offset = 80;
@@ -85,17 +54,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // ==================== HEADER SCROLL ====================
-
-    const header = document.getElementById('header');
-
-    window.addEventListener('scroll', () => {
-        header.classList.toggle('scrolled', window.scrollY > 50);
-    });
-
     // ==================== ACTIVE NAV LINK ====================
 
-    const sections = document.querySelectorAll('section[id]');
+    const sections = document.querySelectorAll('[id]');
     const navLinks = document.querySelectorAll('.nav__link');
 
     function updateActiveNav() {
@@ -114,39 +75,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('scroll', updateActiveNav);
 
-    // ==================== PARTICLES ====================
-
-    const particlesContainer = document.getElementById('particles');
-    if (particlesContainer) {
-        for (let i = 0; i < 25; i++) {
-            const particle = document.createElement('div');
-            const size = Math.random() * 3 + 1;
-            particle.style.cssText = `
-                position: absolute;
-                width: ${size}px;
-                height: ${size}px;
-                background: ${Math.random() > 0.5 ? 'rgba(255,107,0,0.4)' : 'rgba(255,215,0,0.3)'};
-                border-radius: 50%;
-                left: ${Math.random() * 100}%;
-                top: ${Math.random() * 100}%;
-                animation: particleFloat ${Math.random() * 10 + 10}s linear infinite;
-                animation-delay: ${Math.random() * -10}s;
-            `;
-            particlesContainer.appendChild(particle);
-        }
-
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes particleFloat {
-                0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-                10% { opacity: 1; }
-                90% { opacity: 1; }
-                100% { transform: translateY(-100px) rotate(720deg); opacity: 0; }
-            }
-        `;
-        document.head.appendChild(style);
-    }
-
     // ==================== SCROLL REVEAL ====================
 
     const observer = new IntersectionObserver((entries) => {
@@ -164,6 +92,38 @@ document.addEventListener('DOMContentLoaded', () => {
         el.style.transform = 'translateY(20px)';
         el.style.transition = 'all 0.5s ease';
         observer.observe(el);
+    });
+
+    // ==================== LIGHTBOX ====================
+
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.querySelector('.lightbox__img');
+    const lightboxClose = document.querySelector('.lightbox__close');
+    const lightboxOverlay = document.querySelector('.lightbox__overlay');
+
+    document.querySelectorAll('.photo img').forEach(img => {
+        img.style.cursor = 'pointer';
+        img.addEventListener('click', function(e) {
+            e.stopPropagation();
+            lightboxImg.src = this.src;
+            lightboxImg.alt = this.alt;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+    });
+
+    function closeLightbox() {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightboxOverlay.addEventListener('click', closeLightbox);
+
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+            closeLightbox();
+        }
     });
 
 });
