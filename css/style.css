@@ -743,11 +743,33 @@ section {
     .contacts__grid {
         grid-template-columns: 1fr;
     }
+
+    .header {
+        min-height: 400px;
+    }
 }
 
 @media (max-width: 768px) {
     .grid {
         grid-template-columns: 1fr;
+    }
+
+    .menu-section {
+        padding: 50px 15px;
+    }
+
+    .menu-category {
+        margin-bottom: 40px;
+    }
+
+    .menu-category__title {
+        font-size: 1.5rem;
+        letter-spacing: 3px;
+        margin-bottom: 20px;
+    }
+
+    .header {
+        min-height: 300px;
     }
 
     .drinks-item {
@@ -768,12 +790,24 @@ section {
         flex-direction: column;
         gap: 5px;
         padding: 15px 10px;
+        position: relative;
+        top: auto;
     }
 
     .nav__link {
-        font-size: 0.85rem;
+        font-size: 0.8rem;
         padding: 6px 10px;
         letter-spacing: 2px;
+    }
+
+    .nav-dropdown__menu {
+        min-width: 160px;
+    }
+
+    .nav-dropdown__menu a {
+        font-size: 0.75rem;
+        padding: 8px 15px;
+        letter-spacing: 1px;
     }
 
     .lang-switcher {
@@ -781,9 +815,17 @@ section {
         margin-top: 5px;
     }
 
+    .section__header {
+        margin-bottom: 40px;
+    }
+
     .section__title {
-        font-size: 2rem;
-        letter-spacing: 5px;
+        font-size: 1.8rem;
+        letter-spacing: 4px;
+    }
+
+    .section__badge {
+        font-size: 0.75rem;
     }
 
     .photo {
@@ -795,15 +837,44 @@ section {
     }
 
     .name {
-        font-size: 1.1rem;
+        font-size: 1.05rem;
     }
 
     .desc {
-        font-size: 0.85rem;
+        font-size: 0.82rem;
     }
 
     .price {
-        font-size: 1.1rem;
+        font-size: 1.05rem;
+    }
+
+    .about__card {
+        padding: 25px 20px;
+    }
+
+    .about__card--main h3 {
+        font-size: 1.5rem;
+    }
+
+    .about__card--main p {
+        font-size: 1rem;
+    }
+
+    .section__container {
+        padding: 60px 15px;
+    }
+
+    .contact__card {
+        padding: 18px;
+        gap: 14px;
+    }
+
+    .contact__text h4 {
+        font-size: 0.95rem;
+    }
+
+    .contact__text p {
+        font-size: 0.9rem;
     }
 
     .contacts__social {
@@ -816,24 +887,123 @@ section {
         max-width: 280px;
         text-align: center;
     }
+
+    .footer {
+        padding: 35px 0;
+    }
+
+    .footer__logo span {
+        font-size: 1.1rem;
+        letter-spacing: 5px;
+    }
+
+    .footer p {
+        font-size: 0.8rem;
+    }
+
+    .card--hero {
+        min-height: 400px;
+    }
+
+    .card--hero .photo {
+        min-height: 400px;
+    }
+
+    .card--hero .photo img {
+        height: 400px;
+    }
 }
 
 @media (max-width: 480px) {
     .section__container {
-        padding: 70px 15px;
+        padding: 50px 12px;
+    }
+
+    .menu-section {
+        padding: 40px 12px;
+    }
+
+    .section__title {
+        font-size: 1.5rem;
+        letter-spacing: 3px;
     }
 
     .photo {
-        aspect-ratio: 3/2;
+        aspect-ratio: 4/3;
     }
 
     .info {
         flex-direction: column;
-        gap: 10px;
+        gap: 8px;
+    }
+
+    .name {
+        font-size: 1rem;
     }
 
     .price {
-        font-size: 1.1rem;
+        font-size: 1rem;
+    }
+
+    .desc {
+        font-size: 0.8rem;
+    }
+
+    .drinks-item {
+        font-size: 0.82rem;
+    }
+
+    .drinks-item__price {
+        font-size: 0.82rem;
+    }
+
+    .drinks-section__title {
+        font-size: 1.2rem;
+    }
+
+    .header {
+        min-height: 250px;
+    }
+
+    .card--hero {
+        min-height: 300px;
+    }
+
+    .card--hero .photo {
+        min-height: 300px;
+    }
+
+    .card--hero .photo img {
+        height: 300px;
+    }
+
+    .about__card--main {
+        padding: 20px 15px;
+    }
+
+    .about__card--main h3 {
+        font-size: 1.3rem;
+        letter-spacing: 3px;
+    }
+
+    .about__card--main p {
+        font-size: 0.9rem;
+        line-height: 1.7;
+    }
+
+    .rating__score {
+        font-size: 2.5rem;
+    }
+
+    .rating__stars {
+        font-size: 1.5rem;
+    }
+
+    .lightbox__close {
+        top: -35px;
+        font-size: 2rem;
+        width: 35px;
+        height: 35px;
     }
 }
 
