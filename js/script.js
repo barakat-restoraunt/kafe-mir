@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
         dropdownToggle.addEventListener('click', function(e) {
             e.preventDefault();
             e.stopPropagation();
-            dropdown.classList.toggle('active');
+            if (dropdown) dropdown.classList.toggle('active');
         });
     }
 
@@ -56,8 +56,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ==================== ACTIVE NAV LINK ====================
 
-    const sections = document.querySelectorAll('[id]');
+    const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.nav__link');
+    let ticking = false;
 
     function updateActiveNav() {
         const scrollY = window.scrollY + 150;
@@ -71,9 +72,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             }
         });
+        ticking = false;
     }
 
-    window.addEventListener('scroll', updateActiveNav);
+    window.addEventListener('scroll', function() {
+        if (!ticking) {
+            requestAnimationFrame(updateActiveNav);
+            ticking = true;
+        }
+    });
 
     // ==================== SCROLL REVEAL ====================
 
@@ -101,29 +108,31 @@ document.addEventListener('DOMContentLoaded', () => {
     const lightboxClose = document.querySelector('.lightbox__close');
     const lightboxOverlay = document.querySelector('.lightbox__overlay');
 
-    document.querySelectorAll('.photo img').forEach(img => {
-        img.style.cursor = 'pointer';
-        img.addEventListener('click', function(e) {
-            e.stopPropagation();
-            lightboxImg.src = this.src;
-            lightboxImg.alt = this.alt;
-            lightbox.classList.add('active');
-            document.body.style.overflow = 'hidden';
+    if (lightbox && lightboxImg && lightboxClose && lightboxOverlay) {
+        document.querySelectorAll('.photo img').forEach(img => {
+            img.style.cursor = 'pointer';
+            img.addEventListener('click', function(e) {
+                e.stopPropagation();
+                lightboxImg.src = this.src;
+                lightboxImg.alt = this.alt;
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
         });
-    });
 
-    function closeLightbox() {
-        lightbox.classList.remove('active');
-        document.body.style.overflow = '';
-    }
-
-    lightboxClose.addEventListener('click', closeLightbox);
-    lightboxOverlay.addEventListener('click', closeLightbox);
-
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && lightbox.classList.contains('active')) {
-            closeLightbox();
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
         }
-    });
+
+        lightboxClose.addEventListener('click', closeLightbox);
+        lightboxOverlay.addEventListener('click', closeLightbox);
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+                closeLightbox();
+            }
+        });
+    }
 
 });
