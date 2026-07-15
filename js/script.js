@@ -47,7 +47,8 @@ document.addEventListener('DOMContentLoaded', () => {
             if (dropdown) dropdown.classList.remove('active');
             const target = document.querySelector(anchor.getAttribute('href'));
             if (target) {
-                const offset = 80;
+                const isMobile = window.innerWidth <= 768;
+                const offset = isMobile ? 120 : 80;
                 const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
                 window.scrollTo({ top, behavior: 'smooth' });
             }
