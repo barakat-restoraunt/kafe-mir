@@ -259,7 +259,7 @@ a {
 }
 
 .card {
-    background: #1a1a1a;
+    background: var(--color-bg-card);
     border-radius: 10px;
     overflow: hidden;
     border: none;
@@ -277,7 +277,7 @@ a {
 .photo {
     width: 100%;
     aspect-ratio: 4/3;
-    background: #111;
+    background: var(--color-bg-secondary);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -289,8 +289,22 @@ a {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.5s ease;
+    transition: transform 0.5s ease, opacity 0.4s ease;
     image-rendering: auto;
+    opacity: 1;
+}
+
+.photo img.lazy {
+    opacity: 0;
+    filter: blur(10px);
+    transform: scale(1.05);
+}
+
+.photo img.loaded {
+    opacity: 1;
+    filter: blur(0);
+    transform: scale(1);
+    transition: transform 0.5s ease, opacity 0.4s ease, filter 0.4s ease;
 }
 
 .card:hover .photo img {
@@ -314,7 +328,7 @@ a {
     font-family: var(--font-heading);
     font-size: 1.25rem;
     font-weight: 700;
-    color: #f0f0f0;
+    color: var(--color-text);
     display: block;
     margin-bottom: 6px;
     line-height: 1.3;
@@ -323,7 +337,7 @@ a {
 .desc {
     font-family: var(--font-heading);
     font-size: 0.9rem;
-    color: #a0a0a0;
+    color: var(--color-text-secondary);
     line-height: 1.5;
 }
 
@@ -487,7 +501,7 @@ section {
 }
 
 .rating__star--half {
-    color: #555;
+    color: var(--color-border);
 }
 
 .rating__score {
@@ -625,6 +639,65 @@ section {
     border-color: var(--color-accent);
     color: var(--color-accent);
     box-shadow: var(--shadow-hover);
+}
+
+/* ==================== CONTACT LINKS ==================== */
+
+.contact__link {
+    color: var(--color-accent);
+    font-weight: 700;
+    font-size: 1.1em;
+}
+
+.contact__link:hover {
+    text-decoration: underline;
+}
+
+.contact__link--email {
+    color: var(--color-text-secondary);
+    font-weight: normal;
+    font-size: inherit;
+}
+
+.about__img {
+    width: 100%;
+    border-radius: 10px;
+    display: block;
+}
+
+/* ==================== SCROLL TO TOP ==================== */
+
+.scroll-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: var(--color-accent);
+    color: var(--color-text);
+    border: none;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition);
+    box-shadow: 0 4px 15px rgba(255, 107, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.scroll-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.scroll-top:hover {
+    background: var(--color-accent-hover);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(255, 107, 0, 0.5);
 }
 
 /* ==================== FOOTER ==================== */
@@ -776,6 +849,31 @@ section {
         font-size: 0.9rem;
     }
 
+    .lightbox__content {
+        max-width: 95vw;
+    }
+
+    .lightbox__img {
+        max-width: 95vw;
+        max-height: 60vh;
+    }
+
+    .lightbox__info {
+        padding: 15px 10px 5px;
+    }
+
+    .lightbox__name {
+        font-size: 1.2rem;
+    }
+
+    .lightbox__desc {
+        font-size: 0.9rem;
+    }
+
+    .lightbox__price {
+        font-size: 1.1rem;
+    }
+
     .drinks-item__name {
         white-space: normal;
     }
@@ -920,6 +1018,15 @@ section {
     }
 }
 
+    .scroll-top {
+        width: 44px;
+        height: 44px;
+        bottom: 20px;
+        right: 20px;
+        font-size: 1rem;
+    }
+}
+
 @media (max-width: 480px) {
     .section__container {
         padding: 50px 12px;
@@ -1006,10 +1113,21 @@ section {
     }
 
     .lightbox__close {
-        top: -35px;
         font-size: 2rem;
-        width: 35px;
-        height: 35px;
+        width: 40px;
+        height: 40px;
+    }
+
+    .lightbox__name {
+        font-size: 1.2rem;
+    }
+
+    .lightbox__desc {
+        font-size: 0.9rem;
+    }
+
+    .lightbox__price {
+        font-size: 1.1rem;
     }
 }
 
@@ -1022,6 +1140,7 @@ section {
     z-index: 9999;
     align-items: center;
     justify-content: center;
+    padding: 20px;
 }
 
 .lightbox.active {
@@ -1033,6 +1152,7 @@ section {
     inset: 0;
     background: rgba(0, 0, 0, 0.9);
     cursor: pointer;
+    animation: lightboxFadeIn 0.3s ease;
 }
 
 .lightbox__content {
@@ -1040,34 +1160,89 @@ section {
     max-width: 90vw;
     max-height: 90vh;
     z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    animation: lightboxScaleIn 0.3s ease;
 }
 
 .lightbox__img {
     max-width: 90vw;
-    max-height: 85vh;
+    max-height: 70vh;
     object-fit: contain;
     border-radius: var(--radius);
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    flex-shrink: 0;
+}
+
+.lightbox__info {
+    text-align: center;
+    padding: 20px 15px 5px;
+    max-width: 600px;
+    width: 100%;
+    flex-shrink: 0;
+}
+
+.lightbox__name {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: 8px;
+    letter-spacing: 2px;
+}
+
+.lightbox__desc {
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.lightbox__price {
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--color-accent);
+    letter-spacing: 1px;
 }
 
 .lightbox__close {
-    position: absolute;
-    top: -40px;
-    right: 0;
-    background: none;
+    position: sticky;
+    top: 0;
+    float: right;
+    margin: 0 -10px 10px 0;
+    background: rgba(0, 0, 0, 0.6);
     border: none;
     color: var(--color-text);
     font-size: 2.5rem;
     cursor: pointer;
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: var(--transition);
+    border-radius: 50%;
+    z-index: 2;
+    flex-shrink: 0;
 }
 
 .lightbox__close:hover {
     color: var(--color-accent);
-    transform: scale(1.2);
+    transform: scale(1.1);
+    background: rgba(0, 0, 0, 0.8);
+}
+
+@keyframes lightboxFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes lightboxScaleIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
 }
